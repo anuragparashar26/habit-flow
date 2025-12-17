@@ -27,7 +27,17 @@ exports.register = async (req, res) => {
     );
 
     if (userExists.rows.length > 0) {
-      return res.status(400).json({ error: 'User already exists with this email or username' });
+      // Check which field is duplicated for a more specific message
+      const existingUser = userExists.rows[0];
+      let errorMsg = 'User already exists with this email or username';
+      if (existingUser.email === email && existingUser.username === username) {
+        errorMsg = 'A user with this email and username already exists.';
+      } else if (existingUser.email === email) {
+        errorMsg = 'A user with this email already exists.';
+      } else if (existingUser.username === username) {
+        errorMsg = 'A user with this username already exists.';
+      }
+      return res.status(400).json({ error: errorMsg });
     }
 
     // Hash password
@@ -75,7 +85,7 @@ exports.login = async (req, res) => {
     const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'No account found with this email.' });
     }
 
     const user = result.rows[0];
@@ -84,7 +94,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password_hash);
 
     if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'Incorrect password.' });
     }
 
     // Generate token
