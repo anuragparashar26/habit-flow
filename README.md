@@ -278,7 +278,7 @@ This project is licensed under the MIT License.
 
 ## 🔗 Live Demo
 
-**Live URL**: [To be deployed]
+**Live URL**: [CLICK HERE](https://habit-flow-henna.vercel.app/)
 
 **Demo Credentials**:
 
