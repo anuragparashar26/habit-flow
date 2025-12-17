@@ -209,7 +209,7 @@ const FriendsFeed = () => {
             feed.map((activity, index) => (
               <div key={index} className="card hover:shadow-lg transition-shadow">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center shrink-0">
                     <span className="text-primary-600 font-medium text-lg">
                       {activity.username[0].toUpperCase()}
                     </span>
@@ -260,7 +260,7 @@ const FriendsFeed = () => {
             following.map((user) => (
               <div key={user.id} className="card">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center shrink-0">
                     <span className="text-primary-600 font-medium text-xl">
                       {user.username[0].toUpperCase()}
                     </span>
