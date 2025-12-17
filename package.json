@@ -1,0 +1,29 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "A full-stack habit tracking application with social features",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "cd client && npm install --include=dev && npm run build",
+    "start:server": "cd server && npm start",
+    "start": "cd server && npm start",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "postinstall": "npm install --prefix server"
+  },
+  "keywords": [
+    "habit-tracker",
+    "react",
+    "node",
+    "express",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
