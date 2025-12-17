@@ -25,6 +25,11 @@ app.use('/api/habits', habitRoutes);
 app.use('/api/social', socialRoutes);
 app.use('/api/users', userRoutes);
 
+// Root info
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Habit Tracker API', health: '/api/health' });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Habit Tracker API is running' });
